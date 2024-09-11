@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Custom CSS for extra styles -->
     <style>
         body {
@@ -55,19 +55,56 @@
             text-align: center;
         }
 
-        /* Slideshow Styles */
-        .carousel-item img {
-            object-fit: cover;
-            height: 400px;
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        /* Gallery Styles */
         .gallery img {
+            width: 100%;
+            border-radius: 10px;
             transition: transform 0.3s ease-in-out;
+            cursor: pointer;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -126,72 +163,53 @@
     <section id="portfolio" class="portfolio py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-4">My Portfolio</h2>
-            <!-- Slideshow Carousel -->
-            <div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="https://via.placeholder.com/1600x800" class="d-block w-100" alt="Slide 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/1600x800" class="d-block w-100" alt="Slide 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/1600x800" class="d-block w-100" alt="Slide 3">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
 
             <!-- Portfolio Gallery -->
-            <div class="row gallery">
-                <div class="col-md-4 mb-4">
-                    <img src="https://via.placeholder.com/400x300" class="img-fluid" alt="Gallery 1" data-bs-toggle="modal"
-                        data-bs-target="#imageModal1">
-                </div>
-                <div class="col-md-4 mb-4">
-                    <img src="https://via.placeholder.com/400x300" class="img-fluid" alt="Gallery 2" data-bs-toggle="modal"
-                        data-bs-target="#imageModal2">
-                </div>
-                <div class="col-md-4 mb-4">
-                    <img src="https://via.placeholder.com/400x300" class="img-fluid" alt="Gallery 3" data-bs-toggle="modal"
-                        data-bs-target="#imageModal3">
-                </div>
+            <div class="gallery">
+                <a href="#img1">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 1">
+                </a>
+                <a href="#img2">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 2">
+                </a>
+                <a href="#img3">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 3">
+                </a>
+                <a href="#img4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 4">
+                </a>
+                <a href="#img5">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 5">
+                </a>
+                <a href="#img6">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 6">
+                </a>
             </div>
-        </div>
 
-        <!-- Image Modals for Gallery -->
-        <div class="modal fade" id="imageModal1" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="https://via.placeholder.com/1600x800" class="img-fluid" alt="Gallery Image 1">
-                    </div>
-                </div>
+            <!-- Lightbox Modals -->
+            <div id="img1" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 1">
             </div>
-        </div>
-        <div class="modal fade" id="imageModal2" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="https://via.placeholder.com/1600x800" class="img-fluid" alt="Gallery Image 2">
-                    </div>
-                </div>
+            <div id="img2" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 2">
             </div>
-        </div>
-        <div class="modal fade" id="imageModal3" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <img src="https://via.placeholder.com/1600x800" class="img-fluid" alt="Gallery Image 3">
-                    </div>
-                </div>
+            <div id="img3" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 3">
+            </div>
+            <div id="img4" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 4">
+            </div>
+            <div id="img5" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 5">
+            </div>
+            <div id="img6" class="lightbox">
+                <a href="#" class="lightbox-close">&times;</a>
+                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 6">
             </div>
         </div>
     </section>
@@ -228,7 +246,7 @@
     </section>
 
     <!-- Background Music -->
-    <audio id="background-music" src="your-music-file.mp3" loop></audio>
+    <audio id="background-music" src="https://example.com/music/classical.mp3" loop></audio>
     <button onclick="toggleMusic()" class="btn btn-light position-fixed" style="bottom: 20px; right: 20px;">Toggle Music</button>
 
     <!-- Footer -->
@@ -255,3 +273,4 @@
 </body>
 
 </html>
+
