@@ -5,272 +5,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modern Professional Website</title>
+    <title>Slideshow Gallery</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS for extra styles -->
+    <!-- Custom CSS -->
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
+            color: #000;
+            overflow-x: hidden;
         }
 
-        /* Hero Section */
-        .hero {
-            background-image: url('https://via.placeholder.com/1600x800');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-        }
-
-        /* Portfolio Section */
-        .portfolio .card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .portfolio .card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #343a40;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        /* Gallery Styles */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Lightbox Styles */
-        .lightbox {
+        .slide {
             display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
         }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 80%;
+        .slide img {
+            width: 100%;
         }
 
-        .lightbox:target {
-            display: flex;
-        }
-
-        .lightbox-close {
+        /* Next & Previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
             color: white;
-            font-size: 30px;
-            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">My Professional Website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="slideshow-container">
+
+        <!-- Slides -->
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 1">
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero d-flex align-items-center justify-content-center">
-        <div class="container text-center">
-            <h1>Welcome to My Professional Website</h1>
-            <p class="lead">Showcasing my expertise and work in web development</p>
-            <a href="#portfolio" class="btn btn-primary btn-lg mt-3">Explore My Work</a>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 2">
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>About Me</h2>
-                    <p>I am a professional web developer with experience in building modern, responsive websites and web applications. I specialize in front-end development, focusing on creating clean, elegant interfaces that deliver a great user experience.</p>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/600x400" alt="About Image" class="img-fluid">
-                </div>
-            </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 3">
         </div>
-    </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-4">My Portfolio</h2>
-
-            <!-- Portfolio Gallery -->
-            <div class="gallery">
-                <a href="#img1">
-                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 1">
-                </a>
-                <a href="#img2">
-                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 2">
-                </a>
-                <a href="#img3">
-                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 3">
-                </a>
-                <a href="#img4">
-                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 4">
-                </a>
-                <a href="#img5">
-                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 5">
-                </a>
-                <a href="#img6">
-                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 6">
-                </a>
-            </div>
-
-            <!-- Lightbox Modals -->
-            <div id="img1" class="lightbox">
-                <a href="#" class="lightbox-close">&times;</a>
-                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 1">
-            </div>
-            <div id="img2" class="lightbox">
-                <a href="#" class="lightbox-close">&times;</a>
-                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 2">
-            </div>
-            <div id="img3" class="lightbox">
-                <a href="#" class="lightbox-close">&times;</a>
-                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 3">
-            </div>
-            <div id="img4" class="lightbox">
-                <a href="#" class="lightbox-close">&times;</a>
-                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 4">
-            </div>
-            <div id="img5" class="lightbox">
-                <a href="#" class="lightbox-close">&times;</a>
-                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 5">
-            </div>
-            <div id="img6" class="lightbox">
-                <a href="#" class="lightbox-close">&times;</a>
-                <img src="https://via.placeholder.com/1600x800" alt="Gallery Image 6">
-            </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 4">
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Contact Me</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <h4>Contact Information</h4>
-                    <p>Email: contact@mywebsite.com</p>
-                    <p>Phone: +123 456 7890</p>
-                </div>
-            </div>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 5">
         </div>
-    </section>
 
-    <!-- Background Music -->
-    <audio id="background-music" src="https://example.com/music/classical.mp3" loop></audio>
-    <button onclick="toggleMusic()" class="btn btn-light position-fixed" style="bottom: 20px; right: 20px;">Toggle Music</button>
-
-    <!-- Footer -->
-    <footer class="mt-5">
-        <div class="container">
-            <p class="mb-0">© 2024 My Professional Website - All Rights Reserved</p>
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 6">
         </div>
-    </footer>
+
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 7">
+        </div>
+
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 8">
+        </div>
+
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 9">
+        </div>
+
+        <div class="slide">
+            <img src="https://via.placeholder.com/800x600" alt="Image 10">
+        </div>
+
+        <!-- Navigation buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Music Control Script -->
+    <!-- Slideshow Script -->
     <script>
-        const music = document.getElementById('background-music');
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-            } else {
-                music.pause();
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n - 1;
+            showSlides();
         }
     </script>
 </body>
 
 </html>
-
